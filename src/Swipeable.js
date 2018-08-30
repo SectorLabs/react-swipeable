@@ -202,6 +202,7 @@ class Swipeable extends React.Component {
     }
 
     if (pos.absX > pos.absY) {
+        if (cancelablePageSwipe && preventDefaultTouchmoveEvent) e.preventDefault();
       if (pos.deltaX > 0) {
         if (onSwipingLeft || onSwipedLeft) {
           onSwipingLeft && onSwipingLeft(e, pos.absX);
@@ -222,8 +223,6 @@ class Swipeable extends React.Component {
     }
 
     this.swipeable.swiping = true;
-
-    if (cancelablePageSwipe && preventDefaultTouchmoveEvent) e.preventDefault();
   }
 
   eventEnd(e) {
