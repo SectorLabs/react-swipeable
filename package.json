@@ -1,9 +1,10 @@
 {
-  "name": "react-swipeable",
-  "version": "4.3.0",
+  "name": "@sector-labs/react-swipeable",
+  "version": "5.0.0",
   "description": "Swipe bindings for react",
   "main": "lib/Swipeable.js",
   "scripts": {
+    "verify": "eslint .",
     "test": "npm run test:unit && npm run lint",
     "test:unit": "jest",
     "lint": "eslint .",
@@ -31,15 +32,18 @@
     "android",
     "react-component"
   ],
-  "author": "Josh Perez <josh@goatslacker.com>",
+  "author": "Sector Labs <open-source@sectorlabs.ro> / Josh Perez",
   "repository": {
     "type": "git",
-    "url": "http://github.com/dogfessional/react-swipeable.git"
+    "url": "https://github.com/SectorLabs/react-swipeable.git"
   },
   "bugs": {
-    "url": "https://github.com/dogfessional/react-swipeable/issues"
+    "url": "https://github.com/SectorLabs/react-swipeable/issues"
   },
-  "homepage": "https://github.com/dogfessional/react-swipeable",
+  "homepage": "https://github.com/SectorLabs/react-swipeable",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "files": [
     "lib",
     "src"
@@ -68,6 +72,12 @@
     "prop-types": "^15.5.8"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0-0 || ^16.0.0-0"
+    "react": ">=15"
+  },
+  "overrides": {
+    "cheerio": "1.0.0-rc.12"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

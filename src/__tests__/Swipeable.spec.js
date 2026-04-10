@@ -181,11 +181,11 @@ describe('Swipeable', () => {
   });
 
   it('calls preventDefault correctly when swiping in direction that has a callback', () => {
-    const onSwipedDown = jest.fn();
+    const onSwiping = jest.fn();
     const preventDefault = jest.fn();
     const wrapper = mount((
       <Swipeable
-        onSwipedDown={onSwipedDown}
+        onSwiping={onSwiping}
         preventDefaultTouchmoveEvent={true}
       >
         <span>Touch Here</span>
@@ -194,12 +194,12 @@ describe('Swipeable', () => {
 
     const touchHere = wrapper.find('span');
     touchHere.simulate('touchStart', createStartTouchEventObject({ x: 100, y: 100, preventDefault }));
-    touchHere.simulate('touchMove', createMoveTouchEventObject({ x: 100, y: 125, preventDefault }));
-    touchHere.simulate('touchMove', createMoveTouchEventObject({ x: 100, y: 150, preventDefault }));
-    touchHere.simulate('touchMove', createMoveTouchEventObject({ x: 100, y: 175, preventDefault }));
-    touchHere.simulate('touchEnd', createMoveTouchEventObject({ x: 100, y: 200, preventDefault }));
+    touchHere.simulate('touchMove', createMoveTouchEventObject({ x: 75, y: 100, preventDefault }));
+    touchHere.simulate('touchMove', createMoveTouchEventObject({ x: 50, y: 100, preventDefault }));
+    touchHere.simulate('touchMove', createMoveTouchEventObject({ x: 25, y: 100, preventDefault }));
+    touchHere.simulate('touchEnd', createMoveTouchEventObject({ x: 0, y: 100, preventDefault }));
 
-    expect(onSwipedDown).toHaveBeenCalled();
+    expect(onSwiping).toHaveBeenCalled();
 
     expect(preventDefault).toHaveBeenCalledTimes(3);
     wrapper.unmount();
@@ -243,8 +243,8 @@ describe('Swipeable', () => {
 
     const touchHere = wrapper.find('span');
     touchHere.simulate('touchStart', createStartTouchEventObject({ x: 100, y: 100, preventDefault }));
-    touchHere.simulate('touchMove', createMoveTouchEventObject({ x: 100, y: 50, preventDefault }));
-    touchHere.simulate('touchEnd', createMoveTouchEventObject({ x: 100, y: 5, preventDefault }));
+    touchHere.simulate('touchMove', createMoveTouchEventObject({ x: 50, y: 100, preventDefault }));
+    touchHere.simulate('touchEnd', createMoveTouchEventObject({ x: 5, y: 100, preventDefault }));
 
     expect(onSwiping).toHaveBeenCalled();
 
@@ -266,8 +266,8 @@ describe('Swipeable', () => {
 
     const touchHere = wrapper.find('span');
     touchHere.simulate('touchStart', createStartTouchEventObject({ x: 100, y: 100, preventDefault }));
-    touchHere.simulate('touchMove', createMoveTouchEventObject({ x: 100, y: 50, preventDefault }));
-    touchHere.simulate('touchEnd', createMoveTouchEventObject({ x: 100, y: 5, preventDefault }));
+    touchHere.simulate('touchMove', createMoveTouchEventObject({ x: 50, y: 100, preventDefault }));
+    touchHere.simulate('touchEnd', createMoveTouchEventObject({ x: 5, y: 100, preventDefault }));
 
     expect(onSwiped).toHaveBeenCalled();
 
